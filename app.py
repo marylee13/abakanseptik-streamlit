@@ -46,8 +46,6 @@ st.markdown(
         0%, 100% { box-shadow: 0 4px 14px rgba(232, 93, 4, 0.25); }
         50%      { box-shadow: 0 6px 22px rgba(232, 93, 4, 0.4); }
     }
-
-    /* Грузовик едет */
     @keyframes drive {
         0%   { transform: translateX(0) rotate(0deg); }
         20%  { transform: translateX(6px) rotate(1deg); }
@@ -104,31 +102,6 @@ st.markdown(
         background: #ffca2c !important;
         color: #222 !important;
         transform: translateY(-3px) scale(1.03);
-    }
-
-    .feature-card {
-        background: #fff8f0;
-        border-left: 5px solid #e85d04;
-        padding: 18px 20px;
-        border-radius: 12px;
-        margin-bottom: 12px;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .feature-card:hover {
-        transform: translateX(4px);
-        box-shadow: 0 6px 18px rgba(232, 93, 4, 0.12);
-    }
-    .feature-num {
-        font-size: 1.55rem;
-        font-weight: 800;
-        color: #e85d04;
-        margin-bottom: 4px;
-        letter-spacing: -0.02em;
-    }
-    .feature-text {
-        font-size: 1.05rem;
-        color: #333;
-        line-height: 1.45;
     }
 
     .price-card {
@@ -285,32 +258,114 @@ with col2:
     )
     st.markdown('</div>', unsafe_allow_html=True)
 
-# ===== ПОЧЕМУ МЫ =====
+# ===== ПОЧЕМУ МЫ — АККОРДЕОН =====
 st.markdown('<div class="section-title anim-fade-up">Почему нужно выбрать нас?</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-subtitle">Несколько фактов о нашей компании, которые убедят Вас воспользоваться нашими услугами</div>', unsafe_allow_html=True)
 
 features = [
-    ("1", "Очистка сточных вод в Абакане и Хакасии: 15 лет опыта"),
-    ("2", "Вывоз ЖБО в Абакане: доступные цены, высокая эффективность"),
-    ("3", "Санитарная чистота: ваш объект в надёжных руках"),
-    ("4", "Индивидуальный подход, оперативность, профессионализм: мы гарантируем результат"),
-    ("5", "Освобождение от воды: от остановок до жилых домов"),
-    ("6", "Команда профессионалов: работаем на результат"),
-    ("7", "Современная техника: бесперебойная работа, гарантированное качество"),
+    ("1", "Очистка сточных вод в Абакане и Хакасии: 15 лет опыта",
+     "Мы предлагаем Вам откачку выгребных ям, септиков, колодцев, луж в г.Абакане, по Республике Хакасия и югу Красноярского края, имея опыт в данной сфере более 15 лет"),
+    ("2", "Вывоз ЖБО в Абакане: доступные цены, высокая эффективность",
+     "Мы оказываем услуги по вывозу ЖБО в г. Абакане по приемлемой цене, являясь при этом конкурентноспособной преуспевающей компанией"),
+    ("3", "Санитарная чистота: ваш объект в надёжных руках",
+     "Мы всегда готовы помочь содержать Ваше предприятие, объект или частный дом в требуемом санитарно-экологическом состоянии"),
+    ("4", "Индивидуальный подход, оперативность, профессионализм: мы гарантируем результат",
+     "Проявляя индивидуальный подход, оперативность, профессиональное отношение к делу и клиенту, мы зарекомендовали себя как ответственный исполнитель"),
+    ("5", "Освобождение от воды: от остановок до жилых домов",
+     "Наши ассенизаторы откачают воду из луж: освободят от воды остановки общественного транспорта, территории у магазинов, торговых центров и жилых домов"),
+    ("6", "Команда профессионалов: работаем на результат",
+     "У нас работает слаженная команда профессионалов, которые знают и любят свое дело"),
+    ("7", "Современная техника: бесперебойная работа, гарантированное качество",
+     "Вся техника находится в отличном состоянии и обслуживается в собственных боксах, оборудованных всем необходимым для ремонта"),
 ]
 
-cols = st.columns(2)
-for i, (num, text) in enumerate(features):
-    with cols[i % 2]:
-        st.markdown(
-            f"""
-            <div class="feature-card anim-fade-up">
-                <div class="feature-num">{num}</div>
-                <div class="feature-text">{text}</div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+accordion_items = "".join([
+    f"""
+    <div class="acc-item" onclick="toggleAcc(this)">
+      <div class="acc-header">
+        <span class="acc-num">{num}</span>
+        <span class="acc-title">{title}</span>
+        <span class="acc-arrow">›</span>
+      </div>
+      <div class="acc-body">{content}</div>
+    </div>
+    """
+    for num, title, content in features
+])
+
+accordion_html = f"""
+<style>
+  .acc-wrap {{ font-family: 'Outfit', sans-serif; max-width: 100%; }}
+  .acc-item {{
+    background: #fff8f0;
+    border-left: 5px solid #e85d04;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: box-shadow 0.25s ease, transform 0.2s ease;
+    overflow: hidden;
+  }}
+  .acc-item:hover {{ box-shadow: 0 6px 18px rgba(232, 93, 4, 0.12); }}
+  .acc-item.open {{ box-shadow: 0 6px 20px rgba(232, 93, 4, 0.15); }}
+  .acc-header {{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+  }}
+  .acc-num {{
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #e85d04;
+    min-width: 28px;
+    letter-spacing: -0.02em;
+  }}
+  .acc-title {{
+    font-size: 1.05rem;
+    color: #222;
+    font-weight: 600;
+    flex: 1;
+    line-height: 1.35;
+  }}
+  .acc-arrow {{
+    font-size: 1.4rem;
+    color: #e85d04;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+    transform: rotate(90deg);
+  }}
+  .acc-item.open .acc-arrow {{ transform: rotate(-90deg); }}
+  .acc-body {{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.3s ease;
+    padding: 0 18px 0 60px;
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.55;
+  }}
+  .acc-item.open .acc-body {{
+    max-height: 200px;
+    padding: 0 18px 16px 60px;
+  }}
+</style>
+
+<div class="acc-wrap">
+  {accordion_items}
+</div>
+
+<script>
+function toggleAcc(el) {{
+  const wasOpen = el.classList.contains('open');
+  // close all
+  document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+  // open clicked if it was closed
+  if (!wasOpen) el.classList.add('open');
+}}
+</script>
+"""
+
+components.html(accordion_html, height=520)
 
 # ===== ТАРИФЫ =====
 st.markdown('<div class="section-title anim-fade-up">СТОИМОСТЬ РАБОТ АССЕНИЗАТОРА</div>', unsafe_allow_html=True)
