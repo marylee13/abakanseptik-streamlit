@@ -24,7 +24,15 @@ st.markdown(
     .stDeployButton {display: none;}
     div[data-testid="stToolbar"] {display: none;}
 
-    /* Общий фон */
+    /* Уменьшаем отступы контейнера Streamlit */
+    .block-container {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+        max-width: 1200px;
+    }
+
     .stApp {
         background-color: #ffffff;
     }
@@ -33,14 +41,14 @@ st.markdown(
     .btn-orange {
         background: linear-gradient(90deg, #e85d04, #f48c06) !important;
         color: white !important;
-        padding: 12px 24px !important;
+        padding: 11px 22px !important;
         border-radius: 8px !important;
         font-weight: 600 !important;
         text-decoration: none !important;
         display: inline-block !important;
-        margin: 6px 8px 6px 0 !important;
+        margin: 5px 6px 5px 0 !important;
         border: none !important;
-        font-size: 1rem !important;
+        font-size: 0.95rem !important;
         transition: all 0.2s !important;
     }
     .btn-orange:hover {
@@ -52,13 +60,13 @@ st.markdown(
     .btn-yellow {
         background: #ffc107 !important;
         color: #222 !important;
-        padding: 14px 28px !important;
+        padding: 12px 24px !important;
         border-radius: 8px !important;
         font-weight: 700 !important;
         text-decoration: none !important;
         display: inline-block !important;
         border: none !important;
-        font-size: 1.05rem !important;
+        font-size: 1rem !important;
     }
     .btn-yellow:hover {
         background: #ffca2c !important;
@@ -69,72 +77,73 @@ st.markdown(
     .feature-card {
         background: #fff8f0;
         border-left: 5px solid #e85d04;
-        padding: 18px 20px;
+        padding: 14px 16px;
         border-radius: 10px;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
     }
     .feature-num {
-        font-size: 1.5rem;
+        font-size: 1.35rem;
         font-weight: 800;
         color: #e85d04;
-        margin-bottom: 4px;
+        margin-bottom: 2px;
     }
     .feature-text {
-        font-size: 0.98rem;
+        font-size: 0.95rem;
         color: #333;
-        line-height: 1.45;
+        line-height: 1.4;
     }
 
     .price-card {
         background: white;
         border: 2px solid #ffe0b2;
-        border-radius: 16px;
-        padding: 24px 20px;
+        border-radius: 14px;
+        padding: 20px 16px;
         text-align: center;
         height: 100%;
         box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
     .price-title {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         font-weight: 700;
         color: #333;
     }
     .price-value {
-        font-size: 2rem;
+        font-size: 1.8rem;
         font-weight: 800;
         color: #e85d04;
-        margin: 10px 0;
+        margin: 8px 0;
     }
     .price-details {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         color: #555;
-        line-height: 1.55;
-        margin-bottom: 16px;
+        line-height: 1.5;
+        margin-bottom: 14px;
     }
 
     .review-card {
         background: #fafafa;
         border-radius: 12px;
-        padding: 18px;
-        margin-bottom: 12px;
+        padding: 14px;
+        margin-bottom: 10px;
         border: 1px solid #eee;
         height: 100%;
     }
     .review-name {
         font-weight: 700;
         color: #e85d04;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
+        font-size: 0.95rem;
     }
     .review-text {
-        font-size: 0.93rem;
+        font-size: 0.9rem;
         color: #444;
         font-style: italic;
-        line-height: 1.45;
+        line-height: 1.4;
     }
 
     .contact-item {
-        font-size: 1.1rem;
-        margin: 8px 0;
+        font-size: 1.05rem;
+        margin: 6px 0;
     }
     .contact-item a {
         color: #e85d04;
@@ -146,26 +155,27 @@ st.markdown(
     }
 
     .section-title {
-        font-size: 1.8rem;
+        font-size: 1.55rem;
         font-weight: 800;
         color: #222;
         text-align: center;
-        margin: 2rem 0 0.8rem 0;
+        margin: 1.4rem 0 0.4rem 0;
     }
     .section-subtitle {
         text-align: center;
         color: #666;
-        margin-bottom: 1.5rem;
-        font-size: 1rem;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
     }
 
     .footer-box {
         background: linear-gradient(90deg, #e85d04 0%, #f48c06 100%);
         color: white;
         text-align: center;
-        padding: 36px 20px;
+        padding: 28px 16px;
         border-radius: 12px;
-        margin-top: 3rem;
+        margin-top: 1.8rem;
+        margin-bottom: 0.5rem;
     }
     </style>
     """,
@@ -176,15 +186,15 @@ st.markdown(
 st.markdown(
     """
     <div style="background: linear-gradient(90deg, #e85d04 0%, #f48c06 100%); 
-                padding: 16px 24px; border-radius: 12px; margin-bottom: 24px;
-                display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                padding: 12px 20px; border-radius: 10px; margin-bottom: 16px;
+                display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
         <div>
-            <div style="font-size: 1.35rem; font-weight: 700; color: white;">🚛 ИП Качур М. В.</div>
-            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.9);">Откачка септиков в Абакане</div>
+            <div style="font-size: 1.25rem; font-weight: 700; color: white;">🚛 ИП Качур М. В.</div>
+            <div style="font-size: 0.85rem; color: rgba(255,255,255,0.9);">Откачка септиков в Абакане</div>
         </div>
         <a href="tel:+73902212010" 
-           style="background: white; color: #e85d04; padding: 10px 20px; border-radius: 8px; 
-                  font-weight: 700; text-decoration: none; font-size: 0.95rem;">
+           style="background: white; color: #e85d04; padding: 8px 16px; border-radius: 8px; 
+                  font-weight: 700; text-decoration: none; font-size: 0.9rem;">
             📞 +7 (3902) 212-010
         </a>
     </div>
@@ -193,21 +203,21 @@ st.markdown(
 )
 
 # ===== HERO =====
-col1, col2 = st.columns([1.15, 1], gap="large")
+col1, col2 = st.columns([1.15, 1], gap="medium")
 
 with col1:
     st.markdown(
         """
-        <h1 style="font-size: 2.4rem; font-weight: 800; color: #e85d04; line-height: 1.2; margin-bottom: 1rem;">
+        <h1 style="font-size: 2.1rem; font-weight: 800; color: #e85d04; line-height: 1.2; margin: 0 0 0.7rem 0;">
             Работаем в любых условиях
         </h1>
-        <p style="font-size: 1.05rem; color: #444; line-height: 1.6; margin-bottom: 0.5rem;">
+        <p style="font-size: 1rem; color: #444; line-height: 1.55; margin: 0 0 0.4rem 0;">
             – Объём ЖБО, вывозимых нашими ассенизаторами, составляет от 1 до 10 м³ — идеально как для частных домов, так и для производственных предприятий и компаний сферы ЖКХ.
         </p>
-        <p style="font-size: 1.05rem; color: #444; line-height: 1.6; margin-bottom: 0.5rem;">
+        <p style="font-size: 1rem; color: #444; line-height: 1.55; margin: 0 0 0.4rem 0;">
             – Приглашаем к сотрудничеству частных лиц, организации и коммунальные службы.
         </p>
-        <p style="font-size: 1.05rem; color: #444; line-height: 1.6; margin-bottom: 1.2rem;">
+        <p style="font-size: 1rem; color: #444; line-height: 1.55; margin: 0 0 0.9rem 0;">
             – ИП Качур Максим Васильевич — ваш надёжный партнёр в сфере услуг вывоза ЖБО. Более 15 лет мы занимаем одну из ключевых позиций в данной сфере.
         </p>
         """,
@@ -216,7 +226,7 @@ with col1:
 
     st.markdown(
         """
-        <div style="margin-top: 8px;">
+        <div>
             <a href="https://disk.yandex.ru/i/gCeX4X-LeEuxxw" target="_blank" class="btn-orange">
                 📄 Скачать договор для юр. лиц
             </a>
@@ -233,8 +243,6 @@ with col2:
         "https://xn--80aaacwsldyvuo.xn--p1ai/wp-content/uploads/2024/11/e2776ed26915ce5a3e586d2b3941fcb7.png",
         use_container_width=True
     )
-
-st.markdown("<br>", unsafe_allow_html=True)
 
 # ===== ПОЧЕМУ МЫ =====
 st.markdown('<div class="section-title">Почему нужно выбрать нас?</div>', unsafe_allow_html=True)
@@ -332,7 +340,7 @@ for i, (name, text) in enumerate(reviews):
 st.markdown('<div class="section-title">Свяжитесь с нами</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-subtitle">Есть вопросы? Нужно откачать септик? Оставьте заявку — мы свяжемся с вами в ближайшее время.</div>', unsafe_allow_html=True)
 
-col1, col2 = st.columns(2, gap="large")
+col1, col2 = st.columns(2, gap="medium")
 
 with col1:
     st.markdown("#### 📞 Телефоны")
@@ -356,9 +364,8 @@ with col2:
     st.markdown("#### 🏢 Реквизиты")
     st.markdown(
         """
-        <p><strong>ИП Качур Максим Васильевич</strong></p>
-        <p>ИНН <a href="https://www.rusprofile.ru/ip/317190100007117?print=pdf" target="_blank" style="color:#e85d04; font-weight:600;">190116760265</a></p>
-        <br>
+        <p style="margin:0 0 6px 0;"><strong>ИП Качур Максим Васильевич</strong></p>
+        <p style="margin:0 0 12px 0;">ИНН <a href="https://www.rusprofile.ru/ip/317190100007117?print=pdf" target="_blank" style="color:#e85d04; font-weight:600;">190116760265</a></p>
         <a href="https://t.me/otkachkaabk_bot" target="_blank" class="btn-yellow">
             💬 Оставить заявку в Telegram
         </a>
@@ -370,12 +377,12 @@ with col2:
 st.markdown(
     """
     <div class="footer-box">
-        <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px;">🚛 ИП Качур М. В.</div>
-        <div style="opacity: 0.9; margin-bottom: 12px;">Откачка септиков в Абакане</div>
-        <div style="font-size: 0.95rem; opacity: 0.9;">
+        <div style="font-size: 1.2rem; font-weight: 700; margin-bottom: 4px;">🚛 ИП Качур М. В.</div>
+        <div style="opacity: 0.9; margin-bottom: 8px; font-size: 0.95rem;">Откачка септиков в Абакане</div>
+        <div style="font-size: 0.9rem; opacity: 0.9;">
             +7 (3902) 212-010 &nbsp;|&nbsp; septikabakan@mail.ru
         </div>
-        <div style="margin-top: 20px; font-size: 0.85rem; opacity: 0.75;">
+        <div style="margin-top: 14px; font-size: 0.8rem; opacity: 0.75;">
             © 2026 ИП Качур М. В. — Откачка септиков в Абакане. Все права защищены.
         </div>
     </div>
