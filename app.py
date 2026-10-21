@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
 st.set_page_config(
     page_title="ИП Качур М. В. | Откачка септиков в Абакане",
@@ -17,14 +18,12 @@ st.markdown(
         font-family: 'Outfit', sans-serif !important;
     }
 
-    /* Скрываем стандартные элементы Streamlit */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
     .stDeployButton {display: none;}
     div[data-testid="stToolbar"] {display: none;}
 
-    /* Отступы контейнера */
     .block-container {
         padding-top: 1rem !important;
         padding-bottom: 1rem !important;
@@ -33,37 +32,26 @@ st.markdown(
         max-width: 1180px;
     }
 
-    .stApp {
-        background-color: #ffffff;
-    }
+    .stApp { background-color: #ffffff; }
 
-    /* ===== Анимации ===== */
     @keyframes fadeUp {
         from { opacity: 0; transform: translateY(18px); }
         to   { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes fadeIn {
         from { opacity: 0; }
         to   { opacity: 1; }
     }
-
     @keyframes softPulse {
         0%, 100% { box-shadow: 0 4px 14px rgba(232, 93, 4, 0.25); }
         50%      { box-shadow: 0 6px 22px rgba(232, 93, 4, 0.4); }
     }
 
-    .anim-fade-up {
-        animation: fadeUp 0.55s ease-out both;
-    }
+    .anim-fade-up { animation: fadeUp 0.55s ease-out both; }
     .anim-fade-up-d1 { animation: fadeUp 0.55s ease-out 0.08s both; }
     .anim-fade-up-d2 { animation: fadeUp 0.55s ease-out 0.16s both; }
-    .anim-fade-up-d3 { animation: fadeUp 0.55s ease-out 0.24s both; }
-    .anim-fade-in {
-        animation: fadeIn 0.6s ease-out both;
-    }
+    .anim-fade-in { animation: fadeIn 0.6s ease-out both; }
 
-    /* ===== Кнопки ===== */
     .btn-orange {
         background: linear-gradient(90deg, #e85d04, #f48c06) !important;
         color: white !important;
@@ -103,7 +91,6 @@ st.markdown(
         transform: translateY(-3px) scale(1.03);
     }
 
-    /* ===== Карточки ===== */
     .feature-card {
         background: #fff8f0;
         border-left: 5px solid #e85d04;
@@ -163,32 +150,6 @@ st.markdown(
         margin-bottom: 16px;
     }
 
-    .review-card {
-        background: #fafafa;
-        border-radius: 14px;
-        padding: 18px;
-        margin-bottom: 12px;
-        border: 1px solid #eee;
-        height: 100%;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .review-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.07);
-    }
-    .review-name {
-        font-weight: 700;
-        color: #e85d04;
-        margin-bottom: 6px;
-        font-size: 1.05rem;
-    }
-    .review-text {
-        font-size: 1rem;
-        color: #444;
-        font-style: italic;
-        line-height: 1.45;
-    }
-
     .contact-item {
         font-size: 1.15rem;
         margin: 8px 0;
@@ -228,6 +189,14 @@ st.markdown(
         margin-top: 2rem;
         margin-bottom: 0.4rem;
     }
+
+    .map-wrap {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+        border: 2px solid #ffe0b2;
+        margin-top: 0.5rem;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -245,10 +214,7 @@ st.markdown(
         </div>
         <a href="tel:+73902212010" 
            style="background: white; color: #e85d04; padding: 10px 18px; border-radius: 10px; 
-                  font-weight: 700; text-decoration: none; font-size: 1rem;
-                  transition: transform 0.2s ease, box-shadow 0.2s ease;"
-           onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.12)'"
-           onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
+                  font-weight: 700; text-decoration: none; font-size: 1rem;">
             📞 +7 (3902) 212-010
         </a>
     </div>
@@ -368,7 +334,7 @@ for i, t in enumerate(tariffs):
             unsafe_allow_html=True
         )
 
-# ===== ОТЗЫВЫ =====
+# ===== ОТЗЫВЫ — КАРУСЕЛЬ =====
 st.markdown('<div class="section-title anim-fade-up">Отзывы наших клиентов на Авито</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-subtitle">Вы можете доверять нашим ассенизаторам, профессионализму и качеству работ</div>', unsafe_allow_html=True)
 
@@ -381,18 +347,97 @@ reviews = [
     ("S13", "Всё отлично! приехали в этот же день как позвонили, откачали как положено. 10 куб."),
 ]
 
-cols = st.columns(3)
-for i, (name, text) in enumerate(reviews):
-    with cols[i % 3]:
-        st.markdown(
-            f"""
-            <div class="review-card anim-fade-up">
-                <div class="review-name">{name}</div>
-                <div class="review-text">«{text}»</div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+# HTML-карусель (чистый CSS + JS, быстро)
+carousel_html = f"""
+<div style="font-family: 'Outfit', sans-serif; max-width: 100%; margin: 0 auto;">
+  <div id="carousel" style="position: relative; overflow: hidden; border-radius: 16px;">
+    <div id="track" style="display: flex; transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);">
+      {''.join([
+        f'''
+        <div class="slide" style="min-width: 100%; box-sizing: border-box; padding: 8px 4px;">
+          <div style="background: #fafafa; border: 1px solid #eee; border-radius: 16px; padding: 28px 32px; 
+                      text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.06); min-height: 160px;
+                      display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-weight: 700; color: #e85d04; font-size: 1.2rem; margin-bottom: 12px;">{name}</div>
+            <div style="font-size: 1.08rem; color: #444; font-style: italic; line-height: 1.55;">«{text}»</div>
+          </div>
+        </div>
+        ''' for name, text in reviews
+      ])}
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 18px;">
+    <button onclick="prev()" style="
+      width: 44px; height: 44px; border-radius: 50%; border: 2px solid #e85d04; background: white;
+      color: #e85d04; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; font-weight: 700;
+    " onmouseover="this.style.background='#e85d04'; this.style.color='white'"
+       onmouseout="this.style.background='white'; this.style.color='#e85d04'">‹</button>
+
+    <div id="dots" style="display: flex; gap: 8px;"></div>
+
+    <button onclick="next()" style="
+      width: 44px; height: 44px; border-radius: 50%; border: 2px solid #e85d04; background: white;
+      color: #e85d04; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; font-weight: 700;
+    " onmouseover="this.style.background='#e85d04'; this.style.color='white'"
+       onmouseout="this.style.background='white'; this.style.color='#e85d04'">›</button>
+  </div>
+</div>
+
+<script>
+  const total = {len(reviews)};
+  let idx = 0;
+  const track = document.getElementById('track');
+  const dotsEl = document.getElementById('dots');
+
+  function renderDots() {{
+    dotsEl.innerHTML = '';
+    for (let i = 0; i < total; i++) {{
+      const d = document.createElement('div');
+      d.style.cssText = `width:10px;height:10px;border-radius:50%;cursor:pointer;transition:all 0.25s;
+        background:${{i === idx ? '#e85d04' : '#ddd'}}; transform:${{i === idx ? 'scale(1.25)' : 'scale(1)'}}`;
+      d.onclick = () => {{ idx = i; update(); }};
+      dotsEl.appendChild(d);
+    }}
+  }}
+
+  function update() {{
+    track.style.transform = `translateX(-${{idx * 100}}%)`;
+    renderDots();
+  }}
+
+  function next() {{ idx = (idx + 1) % total; update(); }}
+  function prev() {{ idx = (idx - 1 + total) % total; update(); }}
+
+  // автопрокрутка
+  setInterval(next, 4500);
+  update();
+</script>
+"""
+
+components.html(carousel_html, height=280)
+
+# ===== КАРТА =====
+st.markdown('<div class="section-title anim-fade-up">Мы на карте</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-subtitle">Абакан и Республика Хакасия — выезжаем оперативно</div>', unsafe_allow_html=True)
+
+st.markdown('<div class="map-wrap anim-fade-up">', unsafe_allow_html=True)
+components.html(
+    """
+    <iframe 
+        src="https://yandex.ru/map-widget/v1/?um=constructor%3A0403aa07c737a80100a91144e0d12fe4712afbaf35a17839453cf0d5f6120f32&source=constructor" 
+        width="100%" 
+        height="420" 
+        frameborder="0" 
+        allowfullscreen="true"
+        style="display:block; border:0;">
+    </iframe>
+    """,
+    height=430,
+)
+st.markdown('</div>', unsafe_allow_html=True)
 
 # ===== КОНТАКТЫ =====
 st.markdown('<div class="section-title anim-fade-up">Свяжитесь с нами</div>', unsafe_allow_html=True)
