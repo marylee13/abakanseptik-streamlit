@@ -347,16 +347,16 @@ reviews = [
     ("S13", "Всё отлично! приехали в этот же день как позвонили, откачали как положено. 10 куб."),
 ]
 
-# HTML-карусель (чистый CSS + JS, быстро)
+# HTML-карусель — увеличенная высота, чтобы кнопки и точки были видны полностью
 carousel_html = f"""
-<div style="font-family: 'Outfit', sans-serif; max-width: 100%; margin: 0 auto;">
+<div style="font-family: 'Outfit', sans-serif; max-width: 100%; margin: 0 auto; padding-bottom: 12px;">
   <div id="carousel" style="position: relative; overflow: hidden; border-radius: 16px;">
     <div id="track" style="display: flex; transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);">
       {''.join([
         f'''
         <div class="slide" style="min-width: 100%; box-sizing: border-box; padding: 8px 4px;">
           <div style="background: #fafafa; border: 1px solid #eee; border-radius: 16px; padding: 28px 32px; 
-                      text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.06); min-height: 160px;
+                      text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.06); min-height: 150px;
                       display: flex; flex-direction: column; justify-content: center;">
             <div style="font-weight: 700; color: #e85d04; font-size: 1.2rem; margin-bottom: 12px;">{name}</div>
             <div style="font-size: 1.08rem; color: #444; font-style: italic; line-height: 1.55;">«{text}»</div>
@@ -367,20 +367,20 @@ carousel_html = f"""
     </div>
   </div>
 
-  <div style="display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 18px;">
+  <div style="display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 20px; padding-bottom: 8px;">
     <button onclick="prev()" style="
       width: 44px; height: 44px; border-radius: 50%; border: 2px solid #e85d04; background: white;
       color: #e85d04; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s; font-weight: 700;
+      transition: all 0.2s; font-weight: 700; flex-shrink: 0;
     " onmouseover="this.style.background='#e85d04'; this.style.color='white'"
        onmouseout="this.style.background='white'; this.style.color='#e85d04'">‹</button>
 
-    <div id="dots" style="display: flex; gap: 8px;"></div>
+    <div id="dots" style="display: flex; gap: 8px; align-items: center;"></div>
 
     <button onclick="next()" style="
       width: 44px; height: 44px; border-radius: 50%; border: 2px solid #e85d04; background: white;
       color: #e85d04; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s; font-weight: 700;
+      transition: all 0.2s; font-weight: 700; flex-shrink: 0;
     " onmouseover="this.style.background='#e85d04'; this.style.color='white'"
        onmouseout="this.style.background='white'; this.style.color='#e85d04'">›</button>
   </div>
@@ -411,13 +411,12 @@ carousel_html = f"""
   function next() {{ idx = (idx + 1) % total; update(); }}
   function prev() {{ idx = (idx - 1 + total) % total; update(); }}
 
-  // автопрокрутка
   setInterval(next, 4500);
   update();
 </script>
 """
 
-components.html(carousel_html, height=280)
+components.html(carousel_html, height=320)
 
 # ===== КАРТА =====
 st.markdown('<div class="section-title anim-fade-up">Мы на карте</div>', unsafe_allow_html=True)
