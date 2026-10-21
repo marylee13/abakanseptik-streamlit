@@ -11,10 +11,10 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
-    html, body, [class*="css"] {
-        font-family: 'Inter', sans-serif;
+    html, body, [class*="css"], .stMarkdown, p, h1, h2, h3, h4 {
+        font-family: 'Outfit', sans-serif !important;
     }
 
     /* Скрываем стандартные элементы Streamlit */
@@ -24,158 +24,209 @@ st.markdown(
     .stDeployButton {display: none;}
     div[data-testid="stToolbar"] {display: none;}
 
-    /* Уменьшаем отступы контейнера Streamlit */
+    /* Отступы контейнера */
     .block-container {
         padding-top: 1rem !important;
         padding-bottom: 1rem !important;
         padding-left: 2rem !important;
         padding-right: 2rem !important;
-        max-width: 1200px;
+        max-width: 1180px;
     }
 
     .stApp {
         background-color: #ffffff;
     }
 
-    /* Кнопки */
+    /* ===== Анимации ===== */
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(18px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    @keyframes softPulse {
+        0%, 100% { box-shadow: 0 4px 14px rgba(232, 93, 4, 0.25); }
+        50%      { box-shadow: 0 6px 22px rgba(232, 93, 4, 0.4); }
+    }
+
+    .anim-fade-up {
+        animation: fadeUp 0.55s ease-out both;
+    }
+    .anim-fade-up-d1 { animation: fadeUp 0.55s ease-out 0.08s both; }
+    .anim-fade-up-d2 { animation: fadeUp 0.55s ease-out 0.16s both; }
+    .anim-fade-up-d3 { animation: fadeUp 0.55s ease-out 0.24s both; }
+    .anim-fade-in {
+        animation: fadeIn 0.6s ease-out both;
+    }
+
+    /* ===== Кнопки ===== */
     .btn-orange {
         background: linear-gradient(90deg, #e85d04, #f48c06) !important;
         color: white !important;
-        padding: 11px 22px !important;
-        border-radius: 8px !important;
+        padding: 13px 26px !important;
+        border-radius: 10px !important;
         font-weight: 600 !important;
         text-decoration: none !important;
         display: inline-block !important;
-        margin: 5px 6px 5px 0 !important;
+        margin: 6px 8px 6px 0 !important;
         border: none !important;
-        font-size: 0.95rem !important;
-        transition: all 0.2s !important;
+        font-size: 1.05rem !important;
+        letter-spacing: 0.01em;
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
     }
     .btn-orange:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 18px rgba(232, 93, 4, 0.35);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 22px rgba(232, 93, 4, 0.4);
         color: white !important;
     }
 
     .btn-yellow {
         background: #ffc107 !important;
         color: #222 !important;
-        padding: 12px 24px !important;
-        border-radius: 8px !important;
+        padding: 14px 28px !important;
+        border-radius: 10px !important;
         font-weight: 700 !important;
         text-decoration: none !important;
         display: inline-block !important;
         border: none !important;
-        font-size: 1rem !important;
+        font-size: 1.1rem !important;
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+        animation: softPulse 2.4s ease-in-out infinite;
     }
     .btn-yellow:hover {
         background: #ffca2c !important;
         color: #222 !important;
+        transform: translateY(-3px) scale(1.03);
     }
 
-    /* Карточки */
+    /* ===== Карточки ===== */
     .feature-card {
         background: #fff8f0;
         border-left: 5px solid #e85d04;
-        padding: 14px 16px;
-        border-radius: 10px;
-        margin-bottom: 10px;
+        padding: 18px 20px;
+        border-radius: 12px;
+        margin-bottom: 12px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .feature-card:hover {
+        transform: translateX(4px);
+        box-shadow: 0 6px 18px rgba(232, 93, 4, 0.12);
     }
     .feature-num {
-        font-size: 1.35rem;
+        font-size: 1.55rem;
         font-weight: 800;
         color: #e85d04;
-        margin-bottom: 2px;
+        margin-bottom: 4px;
+        letter-spacing: -0.02em;
     }
     .feature-text {
-        font-size: 0.95rem;
+        font-size: 1.05rem;
         color: #333;
-        line-height: 1.4;
+        line-height: 1.45;
     }
 
     .price-card {
         background: white;
         border: 2px solid #ffe0b2;
-        border-radius: 14px;
-        padding: 20px 16px;
+        border-radius: 16px;
+        padding: 26px 20px;
         text-align: center;
         height: 100%;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .price-card:hover {
+        transform: translateY(-6px);
+        border-color: #e85d04;
+        box-shadow: 0 12px 28px rgba(232, 93, 4, 0.15);
     }
     .price-title {
-        font-size: 1.05rem;
+        font-size: 1.15rem;
         font-weight: 700;
         color: #333;
     }
     .price-value {
-        font-size: 1.8rem;
+        font-size: 2.15rem;
         font-weight: 800;
         color: #e85d04;
-        margin: 8px 0;
+        margin: 10px 0;
+        letter-spacing: -0.03em;
     }
     .price-details {
-        font-size: 0.9rem;
+        font-size: 1rem;
         color: #555;
-        line-height: 1.5;
-        margin-bottom: 14px;
+        line-height: 1.55;
+        margin-bottom: 16px;
     }
 
     .review-card {
         background: #fafafa;
-        border-radius: 12px;
-        padding: 14px;
-        margin-bottom: 10px;
+        border-radius: 14px;
+        padding: 18px;
+        margin-bottom: 12px;
         border: 1px solid #eee;
         height: 100%;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .review-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.07);
     }
     .review-name {
         font-weight: 700;
         color: #e85d04;
-        margin-bottom: 4px;
-        font-size: 0.95rem;
+        margin-bottom: 6px;
+        font-size: 1.05rem;
     }
     .review-text {
-        font-size: 0.9rem;
+        font-size: 1rem;
         color: #444;
         font-style: italic;
-        line-height: 1.4;
+        line-height: 1.45;
     }
 
     .contact-item {
-        font-size: 1.05rem;
-        margin: 6px 0;
+        font-size: 1.15rem;
+        margin: 8px 0;
     }
     .contact-item a {
         color: #e85d04;
         text-decoration: none;
         font-weight: 600;
+        transition: color 0.2s ease;
     }
     .contact-item a:hover {
+        color: #c2410c;
         text-decoration: underline;
     }
 
     .section-title {
-        font-size: 1.55rem;
+        font-size: 1.75rem;
         font-weight: 800;
-        color: #222;
+        color: #1a1a1a;
         text-align: center;
-        margin: 1.4rem 0 0.4rem 0;
+        margin: 1.6rem 0 0.35rem 0;
+        letter-spacing: -0.02em;
     }
     .section-subtitle {
         text-align: center;
         color: #666;
-        margin-bottom: 1rem;
-        font-size: 0.95rem;
+        margin-bottom: 1.1rem;
+        font-size: 1.05rem;
     }
 
     .footer-box {
         background: linear-gradient(90deg, #e85d04 0%, #f48c06 100%);
         color: white;
         text-align: center;
-        padding: 28px 16px;
-        border-radius: 12px;
-        margin-top: 1.8rem;
-        margin-bottom: 0.5rem;
+        padding: 32px 18px;
+        border-radius: 14px;
+        margin-top: 2rem;
+        margin-bottom: 0.4rem;
     }
     </style>
     """,
@@ -185,16 +236,19 @@ st.markdown(
 # ===== HEADER =====
 st.markdown(
     """
-    <div style="background: linear-gradient(90deg, #e85d04 0%, #f48c06 100%); 
-                padding: 12px 20px; border-radius: 10px; margin-bottom: 16px;
-                display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+    <div class="anim-fade-in" style="background: linear-gradient(90deg, #e85d04 0%, #f48c06 100%); 
+                padding: 14px 22px; border-radius: 12px; margin-bottom: 18px;
+                display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
         <div>
-            <div style="font-size: 1.25rem; font-weight: 700; color: white;">🚛 ИП Качур М. В.</div>
-            <div style="font-size: 0.85rem; color: rgba(255,255,255,0.9);">Откачка септиков в Абакане</div>
+            <div style="font-size: 1.4rem; font-weight: 700; color: white; letter-spacing: -0.01em;">🚛 ИП Качур М. В.</div>
+            <div style="font-size: 0.95rem; color: rgba(255,255,255,0.92);">Откачка септиков в Абакане</div>
         </div>
         <a href="tel:+73902212010" 
-           style="background: white; color: #e85d04; padding: 8px 16px; border-radius: 8px; 
-                  font-weight: 700; text-decoration: none; font-size: 0.9rem;">
+           style="background: white; color: #e85d04; padding: 10px 18px; border-radius: 10px; 
+                  font-weight: 700; text-decoration: none; font-size: 1rem;
+                  transition: transform 0.2s ease, box-shadow 0.2s ease;"
+           onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.12)'"
+           onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
             📞 +7 (3902) 212-010
         </a>
     </div>
@@ -208,25 +262,27 @@ col1, col2 = st.columns([1.15, 1], gap="medium")
 with col1:
     st.markdown(
         """
-        <h1 style="font-size: 2.1rem; font-weight: 800; color: #e85d04; line-height: 1.2; margin: 0 0 0.7rem 0;">
-            Работаем в любых условиях
-        </h1>
-        <p style="font-size: 1rem; color: #444; line-height: 1.55; margin: 0 0 0.4rem 0;">
-            – Объём ЖБО, вывозимых нашими ассенизаторами, составляет от 1 до 10 м³ — идеально как для частных домов, так и для производственных предприятий и компаний сферы ЖКХ.
-        </p>
-        <p style="font-size: 1rem; color: #444; line-height: 1.55; margin: 0 0 0.4rem 0;">
-            – Приглашаем к сотрудничеству частных лиц, организации и коммунальные службы.
-        </p>
-        <p style="font-size: 1rem; color: #444; line-height: 1.55; margin: 0 0 0.9rem 0;">
-            – ИП Качур Максим Васильевич — ваш надёжный партнёр в сфере услуг вывоза ЖБО. Более 15 лет мы занимаем одну из ключевых позиций в данной сфере.
-        </p>
+        <div class="anim-fade-up">
+            <h1 style="font-size: 2.35rem; font-weight: 800; color: #e85d04; line-height: 1.18; margin: 0 0 0.85rem 0; letter-spacing: -0.03em;">
+                Работаем в любых условиях
+            </h1>
+            <p style="font-size: 1.1rem; color: #444; line-height: 1.6; margin: 0 0 0.5rem 0;">
+                – Объём ЖБО, вывозимых нашими ассенизаторами, составляет от 1 до 10 м³ — идеально как для частных домов, так и для производственных предприятий и компаний сферы ЖКХ.
+            </p>
+            <p style="font-size: 1.1rem; color: #444; line-height: 1.6; margin: 0 0 0.5rem 0;">
+                – Приглашаем к сотрудничеству частных лиц, организации и коммунальные службы.
+            </p>
+            <p style="font-size: 1.1rem; color: #444; line-height: 1.6; margin: 0 0 1rem 0;">
+                – ИП Качур Максим Васильевич — ваш надёжный партнёр в сфере услуг вывоза ЖБО. Более 15 лет мы занимаем одну из ключевых позиций в данной сфере.
+            </p>
+        </div>
         """,
         unsafe_allow_html=True
     )
 
     st.markdown(
         """
-        <div>
+        <div class="anim-fade-up-d1">
             <a href="https://disk.yandex.ru/i/gCeX4X-LeEuxxw" target="_blank" class="btn-orange">
                 📄 Скачать договор для юр. лиц
             </a>
@@ -239,13 +295,15 @@ with col1:
     )
 
 with col2:
+    st.markdown('<div class="anim-fade-up-d2">', unsafe_allow_html=True)
     st.image(
         "https://xn--80aaacwsldyvuo.xn--p1ai/wp-content/uploads/2024/11/e2776ed26915ce5a3e586d2b3941fcb7.png",
         use_container_width=True
     )
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # ===== ПОЧЕМУ МЫ =====
-st.markdown('<div class="section-title">Почему нужно выбрать нас?</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-title anim-fade-up">Почему нужно выбрать нас?</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-subtitle">Несколько фактов о нашей компании, которые убедят Вас воспользоваться нашими услугами</div>', unsafe_allow_html=True)
 
 features = [
@@ -263,7 +321,7 @@ for i, (num, text) in enumerate(features):
     with cols[i % 2]:
         st.markdown(
             f"""
-            <div class="feature-card">
+            <div class="feature-card anim-fade-up">
                 <div class="feature-num">{num}</div>
                 <div class="feature-text">{text}</div>
             </div>
@@ -272,7 +330,7 @@ for i, (num, text) in enumerate(features):
         )
 
 # ===== ТАРИФЫ =====
-st.markdown('<div class="section-title">СТОИМОСТЬ РАБОТ АССЕНИЗАТОРА</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-title anim-fade-up">СТОИМОСТЬ РАБОТ АССЕНИЗАТОРА</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-subtitle">Цены зависят от удалённости, сложности работы, объёма откачки и прочих условий</div>', unsafe_allow_html=True)
 
 tariffs = [
@@ -298,7 +356,7 @@ for i, t in enumerate(tariffs):
     with cols[i]:
         st.markdown(
             f"""
-            <div class="price-card">
+            <div class="price-card anim-fade-up">
                 <div class="price-title">{t['title']}</div>
                 <div class="price-value">{t['price']}</div>
                 <div class="price-details">{t['details']}</div>
@@ -311,7 +369,7 @@ for i, t in enumerate(tariffs):
         )
 
 # ===== ОТЗЫВЫ =====
-st.markdown('<div class="section-title">Отзывы наших клиентов на Авито</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-title anim-fade-up">Отзывы наших клиентов на Авито</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-subtitle">Вы можете доверять нашим ассенизаторам, профессионализму и качеству работ</div>', unsafe_allow_html=True)
 
 reviews = [
@@ -328,7 +386,7 @@ for i, (name, text) in enumerate(reviews):
     with cols[i % 3]:
         st.markdown(
             f"""
-            <div class="review-card">
+            <div class="review-card anim-fade-up">
                 <div class="review-name">{name}</div>
                 <div class="review-text">«{text}»</div>
             </div>
@@ -337,7 +395,7 @@ for i, (name, text) in enumerate(reviews):
         )
 
 # ===== КОНТАКТЫ =====
-st.markdown('<div class="section-title">Свяжитесь с нами</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-title anim-fade-up">Свяжитесь с нами</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-subtitle">Есть вопросы? Нужно откачать септик? Оставьте заявку — мы свяжемся с вами в ближайшее время.</div>', unsafe_allow_html=True)
 
 col1, col2 = st.columns(2, gap="medium")
@@ -364,8 +422,8 @@ with col2:
     st.markdown("#### 🏢 Реквизиты")
     st.markdown(
         """
-        <p style="margin:0 0 6px 0;"><strong>ИП Качур Максим Васильевич</strong></p>
-        <p style="margin:0 0 12px 0;">ИНН <a href="https://www.rusprofile.ru/ip/317190100007117?print=pdf" target="_blank" style="color:#e85d04; font-weight:600;">190116760265</a></p>
+        <p style="margin:0 0 6px 0; font-size:1.1rem;"><strong>ИП Качур Максим Васильевич</strong></p>
+        <p style="margin:0 0 14px 0; font-size:1.05rem;">ИНН <a href="https://www.rusprofile.ru/ip/317190100007117?print=pdf" target="_blank" style="color:#e85d04; font-weight:600;">190116760265</a></p>
         <a href="https://t.me/otkachkaabk_bot" target="_blank" class="btn-yellow">
             💬 Оставить заявку в Telegram
         </a>
@@ -376,13 +434,13 @@ with col2:
 # ===== ФУТЕР =====
 st.markdown(
     """
-    <div class="footer-box">
-        <div style="font-size: 1.2rem; font-weight: 700; margin-bottom: 4px;">🚛 ИП Качур М. В.</div>
-        <div style="opacity: 0.9; margin-bottom: 8px; font-size: 0.95rem;">Откачка септиков в Абакане</div>
-        <div style="font-size: 0.9rem; opacity: 0.9;">
+    <div class="footer-box anim-fade-in">
+        <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 5px; letter-spacing: -0.01em;">🚛 ИП Качур М. В.</div>
+        <div style="opacity: 0.92; margin-bottom: 10px; font-size: 1.05rem;">Откачка септиков в Абакане</div>
+        <div style="font-size: 1rem; opacity: 0.9;">
             +7 (3902) 212-010 &nbsp;|&nbsp; septikabakan@mail.ru
         </div>
-        <div style="margin-top: 14px; font-size: 0.8rem; opacity: 0.75;">
+        <div style="margin-top: 16px; font-size: 0.85rem; opacity: 0.75;">
             © 2026 ИП Качур М. В. — Откачка септиков в Абакане. Все права защищены.
         </div>
     </div>
