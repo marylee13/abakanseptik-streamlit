@@ -47,6 +47,21 @@ st.markdown(
         50%      { box-shadow: 0 6px 22px rgba(232, 93, 4, 0.4); }
     }
 
+    /* Грузовик едет */
+    @keyframes drive {
+        0%   { transform: translateX(0) rotate(0deg); }
+        20%  { transform: translateX(6px) rotate(1deg); }
+        40%  { transform: translateX(12px) rotate(0deg); }
+        60%  { transform: translateX(6px) rotate(-1deg); }
+        80%  { transform: translateX(2px) rotate(0.5deg); }
+        100% { transform: translateX(0) rotate(0deg); }
+    }
+    .truck-drive {
+        display: inline-block;
+        animation: drive 2.2s ease-in-out infinite;
+        transform-origin: center bottom;
+    }
+
     .anim-fade-up { animation: fadeUp 0.55s ease-out both; }
     .anim-fade-up-d1 { animation: fadeUp 0.55s ease-out 0.08s both; }
     .anim-fade-up-d2 { animation: fadeUp 0.55s ease-out 0.16s both; }
@@ -209,7 +224,9 @@ st.markdown(
                 padding: 14px 22px; border-radius: 12px; margin-bottom: 18px;
                 display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
         <div>
-            <div style="font-size: 1.4rem; font-weight: 700; color: white; letter-spacing: -0.01em;">🚛 ИП Качур М. В.</div>
+            <div style="font-size: 1.4rem; font-weight: 700; color: white; letter-spacing: -0.01em;">
+                <span class="truck-drive">🚛</span> ИП Качур М. В.
+            </div>
             <div style="font-size: 0.95rem; color: rgba(255,255,255,0.92);">Откачка септиков в Абакане</div>
         </div>
         <a href="tel:+73902212010" 
@@ -478,7 +495,9 @@ with col2:
 st.markdown(
     """
     <div class="footer-box anim-fade-in">
-        <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 5px; letter-spacing: -0.01em;">🚛 ИП Качур М. В.</div>
+        <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 5px; letter-spacing: -0.01em;">
+            <span class="truck-drive">🚛</span> ИП Качур М. В.
+        </div>
         <div style="opacity: 0.92; margin-bottom: 10px; font-size: 1.05rem;">Откачка септиков в Абакане</div>
         <div style="font-size: 1rem; opacity: 0.9;">
             +7 (3902) 212-010 &nbsp;|&nbsp; septikabakan@mail.ru
