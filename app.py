@@ -60,7 +60,7 @@ st.markdown(
         font-weight: 600 !important;
         text-decoration: none !important;
         display: inline-block !important;
-        margin: 6px 8px 6px 0 !important;
+        margin: 6px 6px !important;
         border: none !important;
         font-size: 1.05rem !important;
         letter-spacing: 0.01em;
@@ -248,7 +248,7 @@ with col1:
 
     st.markdown(
         """
-        <div class="anim-fade-up-d1">
+        <div class="anim-fade-up-d1" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 4px;">
             <a href="https://disk.yandex.ru/i/gCeX4X-LeEuxxw" target="_blank" class="btn-orange">
                 📄 Скачать договор для юр. лиц
             </a>
@@ -347,7 +347,6 @@ reviews = [
     ("S13", "Всё отлично! приехали в этот же день как позвонили, откачали как положено. 10 куб."),
 ]
 
-# HTML-карусель — увеличенная высота, чтобы кнопки и точки были видны полностью
 carousel_html = f"""
 <div style="font-family: 'Outfit', sans-serif; max-width: 100%; margin: 0 auto; padding-bottom: 12px;">
   <div id="carousel" style="position: relative; overflow: hidden; border-radius: 16px;">
