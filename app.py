@@ -295,7 +295,7 @@ accordion_items = "".join([
 
 accordion_html = f"""
 <style>
-  .acc-wrap {{ font-family: 'Outfit', sans-serif; max-width: 100%; }}
+  .acc-wrap {{ font-family: 'Outfit', sans-serif; max-width: 100%; padding-bottom: 16px; }}
   .acc-item {{
     background: #fff8f0;
     border-left: 5px solid #e85d04;
@@ -345,7 +345,7 @@ accordion_html = f"""
     line-height: 1.55;
   }}
   .acc-item.open .acc-body {{
-    max-height: 200px;
+    max-height: 220px;
     padding: 0 18px 16px 60px;
   }}
 </style>
@@ -357,15 +357,13 @@ accordion_html = f"""
 <script>
 function toggleAcc(el) {{
   const wasOpen = el.classList.contains('open');
-  // close all
   document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
-  // open clicked if it was closed
   if (!wasOpen) el.classList.add('open');
 }}
 </script>
 """
 
-components.html(accordion_html, height=520)
+components.html(accordion_html, height=720)
 
 # ===== ТАРИФЫ =====
 st.markdown('<div class="section-title anim-fade-up">СТОИМОСТЬ РАБОТ АССЕНИЗАТОРА</div>', unsafe_allow_html=True)
