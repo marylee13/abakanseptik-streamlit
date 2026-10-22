@@ -2,15 +2,20 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 st.set_page_config(
-    page_title="ИП Качур М. В. | Откачка септиков в Абакане",
+    page_title="Откачка септика Абакан — вывоз ЖБО от 1400 ₽ | ИП Качур М.В.",
     page_icon="🚛",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# ===== CSS =====
+# ===== SEO meta + CSS =====
 st.markdown(
     """
+    <meta name="description" content="Откачка септика в Абакане и Хакасии. Вывоз ЖБО, откачка выгребных ям и колодцев. Цены от 1400 ₽. Работаем более 15 лет. Звоните: +7 (3902) 212-010">
+    <meta name="keywords" content="откачка септика Абакан, вывоз ЖБО Абакан, откачка септиков Хакасия, ассенизатор Абакан, откачка выгребных ям Абакан">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://абакансептик.рф/">
+
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
@@ -185,6 +190,17 @@ st.markdown(
         border: 2px solid #ffe0b2;
         margin-top: 0.5rem;
     }
+
+    .seo-block {
+        background: #fafafa;
+        border-radius: 12px;
+        padding: 20px 24px;
+        margin: 1.2rem 0;
+        border: 1px solid #eee;
+        font-size: 1.02rem;
+        color: #333;
+        line-height: 1.65;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -200,7 +216,7 @@ st.markdown(
             <div style="font-size: 1.4rem; font-weight: 700; color: white; letter-spacing: -0.01em;">
                 <span class="truck-drive">🚛</span> ИП Качур М. В.
             </div>
-            <div style="font-size: 0.95rem; color: rgba(255,255,255,0.92);">Откачка септиков в Абакане</div>
+            <div style="font-size: 0.95rem; color: rgba(255,255,255,0.92);">Откачка септика в Абакане и Хакасии</div>
         </div>
         <a href="tel:+73902212010" 
            style="background: white; color: #e85d04; padding: 10px 18px; border-radius: 10px; 
@@ -219,17 +235,17 @@ with col1:
     st.markdown(
         """
         <div class="anim-fade-up">
-            <h1 style="font-size: 2.35rem; font-weight: 800; color: #e85d04; line-height: 1.18; margin: 0 0 0.85rem 0; letter-spacing: -0.03em;">
-                Работаем в любых условиях
+            <h1 style="font-size: 2.2rem; font-weight: 800; color: #e85d04; line-height: 1.18; margin: 0 0 0.85rem 0; letter-spacing: -0.03em;">
+                Откачка септика в Абакане — быстро и недорого
             </h1>
             <p style="font-size: 1.1rem; color: #444; line-height: 1.6; margin: 0 0 0.5rem 0;">
-                – Объём ЖБО, вывозимых нашими ассенизаторами, составляет от 1 до 10 м³ — идеально как для частных домов, так и для производственных предприятий и компаний сферы ЖКХ.
+                – <strong>Откачка септиков и вывоз ЖБО в Абакане</strong>: объём от 1 до 10 м³ — для частных домов, предприятий и ЖКХ.
             </p>
             <p style="font-size: 1.1rem; color: #444; line-height: 1.6; margin: 0 0 0.5rem 0;">
-                – Приглашаем к сотрудничеству частных лиц, организации и коммунальные службы.
+                – Работаем по Абакану, Республике Хакасия и югу Красноярского края. Приглашаем частных лиц, организации и коммунальные службы.
             </p>
             <p style="font-size: 1.1rem; color: #444; line-height: 1.6; margin: 0 0 1rem 0;">
-                – ИП Качур Максим Васильевич — ваш надёжный партнёр в сфере услуг вывоза ЖБО. Более 15 лет мы занимаем одну из ключевых позиций в данной сфере.
+                – ИП Качур Максим Васильевич — более <strong>15 лет</strong> откачки септиков и вывоза ЖБО. Цены от 1 400 ₽.
             </p>
         </div>
         """,
@@ -254,13 +270,27 @@ with col2:
     st.markdown('<div class="anim-fade-up-d2">', unsafe_allow_html=True)
     st.image(
         "https://xn--80aaacwsldyvuo.xn--p1ai/wp-content/uploads/2024/11/e2776ed26915ce5a3e586d2b3941fcb7.png",
-        use_container_width=True
+        use_container_width=True,
+        caption="Ассенизатор для откачки септика в Абакане"
     )
     st.markdown('</div>', unsafe_allow_html=True)
 
+# ===== SEO-текст (видим поисковикам) =====
+st.markdown(
+    """
+    <div class="seo-block anim-fade-up">
+        <strong>Откачка септика Абакан</strong> — услуга ИП Качур М. В. Выполняем откачку септиков, выгребных ям, колодцев и луж в городе Абакан, по всей Республике Хакасия и на юге Красноярского края.
+        Современные ассенизаторы объёмом до 10 м³, оперативный выезд, прозрачные цены. Заказать <strong>откачку септика в Абакане</strong> можно по телефону
+        <a href="tel:+73902212010" style="color:#e85d04; font-weight:600;">+7 (3902) 212-010</a>
+        или через Telegram. Также оказываем <strong>вывоз ЖБО в Абакане</strong> для частных домов, организаций и ЖКХ.
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 # ===== ПОЧЕМУ МЫ — АККОРДЕОН =====
-st.markdown('<div class="section-title anim-fade-up">Почему нужно выбрать нас?</div>', unsafe_allow_html=True)
-st.markdown('<div class="section-subtitle">Несколько фактов о нашей компании, которые убедят Вас воспользоваться нашими услугами</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-title anim-fade-up">Почему выбирают нашу откачку септиков в Абакане</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-subtitle">Факты о компании — опыт, цены и качество вывоза ЖБО</div>', unsafe_allow_html=True)
 
 features = [
     ("1", "Очистка сточных вод в Абакане и Хакасии: 15 лет опыта",
@@ -366,8 +396,8 @@ function toggleAcc(el) {{
 components.html(accordion_html, height=720)
 
 # ===== ТАРИФЫ =====
-st.markdown('<div class="section-title anim-fade-up">СТОИМОСТЬ РАБОТ АССЕНИЗАТОРА</div>', unsafe_allow_html=True)
-st.markdown('<div class="section-subtitle">Цены зависят от удалённости, сложности работы, объёма откачки и прочих условий</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-title anim-fade-up">Цены на откачку септика в Абакане</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-subtitle">Стоимость зависит от объёма, удалённости и сложности. Вывоз ЖБО — от 1 400 ₽</div>', unsafe_allow_html=True)
 
 tariffs = [
     {
@@ -405,8 +435,8 @@ for i, t in enumerate(tariffs):
         )
 
 # ===== ОТЗЫВЫ — КАРУСЕЛЬ =====
-st.markdown('<div class="section-title anim-fade-up">Отзывы наших клиентов на Авито</div>', unsafe_allow_html=True)
-st.markdown('<div class="section-subtitle">Вы можете доверять нашим ассенизаторам, профессионализму и качеству работ</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-title anim-fade-up">Отзывы об откачке септиков в Абакане</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-subtitle">Клиенты о вывозе ЖБО и работе ассенизаторов</div>', unsafe_allow_html=True)
 
 reviews = [
     ("Женя", "Очень хорошие ребята! Сразу взяли трубку и даже раньше приехали! Очень довольна. Молодцы! Пользуюсь услугой второй раз! Рекомендую!"),
@@ -488,8 +518,8 @@ carousel_html = f"""
 components.html(carousel_html, height=320)
 
 # ===== КАРТА =====
-st.markdown('<div class="section-title anim-fade-up">Мы на карте</div>', unsafe_allow_html=True)
-st.markdown('<div class="section-subtitle">Абакан и Республика Хакасия — выезжаем оперативно</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-title anim-fade-up">Откачка септика на карте Абакана</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-subtitle">Выезжаем по Абакану, Хакасии и югу Красноярского края</div>', unsafe_allow_html=True)
 
 st.markdown('<div class="map-wrap anim-fade-up">', unsafe_allow_html=True)
 components.html(
@@ -507,9 +537,28 @@ components.html(
 )
 st.markdown('</div>', unsafe_allow_html=True)
 
+# ===== FAQ для SEO =====
+st.markdown('<div class="section-title anim-fade-up">Частые вопросы об откачке септика в Абакане</div>', unsafe_allow_html=True)
+
+st.markdown(
+    """
+    <div class="seo-block anim-fade-up">
+        <p><strong>Сколько стоит откачка септика в Абакане?</strong><br>
+        От 1 400 ₽ за объём до 4 м³. Тариф до 6 м³ — 1 700 ₽, от 7 до 10 м³ — 2 400 ₽. Точная цена зависит от удалённости и сложности.</p>
+        <p><strong>Как быстро приедет ассенизатор?</strong><br>
+        Обычно в день обращения. Звоните: +7 (3902) 212-010 или оставьте заявку в Telegram.</p>
+        <p><strong>Работаете ли вы за пределами Абакана?</strong><br>
+        Да. Откачка септиков и вывоз ЖБО — по Республике Хакасия и югу Красноярского края.</p>
+        <p><strong>Что входит в услугу?</strong><br>
+        Откачка септика / выгребной ямы / колодца, вывоз ЖБО, работа оператора. Шланг 10 м, техника до 10 м³.</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 # ===== КОНТАКТЫ =====
-st.markdown('<div class="section-title anim-fade-up">Свяжитесь с нами</div>', unsafe_allow_html=True)
-st.markdown('<div class="section-subtitle">Есть вопросы? Нужно откачать септик? Оставьте заявку — мы свяжемся с вами в ближайшее время.</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-title anim-fade-up">Заказать откачку септика в Абакане</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-subtitle">Телефоны и заявка — ответим быстро</div>', unsafe_allow_html=True)
 
 col1, col2 = st.columns(2, gap="medium")
 
@@ -537,6 +586,7 @@ with col2:
         """
         <p style="margin:0 0 6px 0; font-size:1.1rem;"><strong>ИП Качур Максим Васильевич</strong></p>
         <p style="margin:0 0 14px 0; font-size:1.05rem;">ИНН <a href="https://www.rusprofile.ru/ip/317190100007117?print=pdf" target="_blank" style="color:#e85d04; font-weight:600;">190116760265</a></p>
+        <p style="margin:0 0 14px 0; font-size:1rem; color:#555;">Абакан, Республика Хакасия — откачка септиков и вывоз ЖБО</p>
         <a href="https://t.me/otkachkaabk_bot" target="_blank" class="btn-yellow">
             💬 Оставить заявку в Telegram
         </a>
@@ -551,7 +601,7 @@ st.markdown(
         <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 5px; letter-spacing: -0.01em;">
             <span class="truck-drive">🚛</span> ИП Качур М. В.
         </div>
-        <div style="opacity: 0.92; margin-bottom: 10px; font-size: 1.05rem;">Откачка септиков в Абакане</div>
+        <div style="opacity: 0.92; margin-bottom: 10px; font-size: 1.05rem;">Откачка септика в Абакане · Вывоз ЖБО · Хакасия</div>
         <div style="font-size: 1rem; opacity: 0.9;">
             +7 (3902) 212-010 &nbsp;|&nbsp; septikabakan@mail.ru
         </div>
