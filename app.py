@@ -8,13 +8,80 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# ===== SEO meta + CSS =====
+# ===== SEO meta + Schema.org + CSS =====
 st.markdown(
     """
     <meta name="description" content="Откачка септика в Абакане и Хакасии. Вывоз ЖБО, откачка выгребных ям и колодцев. Цены от 1400 ₽. Работаем более 15 лет. Звоните: +7 (3902) 212-010">
     <meta name="keywords" content="откачка септика Абакан, вывоз ЖБО Абакан, откачка септиков Хакасия, ассенизатор Абакан, откачка выгребных ям Абакан">
     <meta name="robots" content="index, follow">
+    <meta name="author" content="ИП Качур Максим Васильевич">
+    <meta name="geo.region" content="RU-KK">
+    <meta name="geo.placename" content="Абакан">
+    <meta property="og:title" content="Откачка септика Абакан — вывоз ЖБО от 1400 ₽">
+    <meta property="og:description" content="Откачка септиков и вывоз ЖБО в Абакане и Хакасии. Цены от 1400 ₽. Более 15 лет опыта. +7 (3902) 212-010">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
     <link rel="canonical" href="https://абакансептик.рф/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "ИП Качур М. В. — Откачка септика Абакан",
+      "alternateName": "Откачка септиков Абакан",
+      "description": "Откачка септика в Абакане, вывоз ЖБО, откачка выгребных ям и колодцев. Работаем по Абакану, Хакасии и югу Красноярского края более 15 лет.",
+      "url": "https://абакансептик.рф/",
+      "telephone": "+7-3902-212-010",
+      "email": "septikabakan@mail.ru",
+      "priceRange": "1400-2400 RUB",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Абакан",
+        "addressRegion": "Республика Хакасия",
+        "addressCountry": "RU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 53.7211,
+        "longitude": 91.4425
+      },
+      "areaServed": [
+        {"@type": "City", "name": "Абакан"},
+        {"@type": "State", "name": "Республика Хакасия"},
+        {"@type": "Place", "name": "юг Красноярского края"}
+      ],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "08:00",
+        "closes": "22:00"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Откачка септика и вывоз ЖБО",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {"@type": "Service", "name": "Откачка септика до 4 м³"},
+            "price": "1400",
+            "priceCurrency": "RUB"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {"@type": "Service", "name": "Откачка септика до 6 м³"},
+            "price": "1700",
+            "priceCurrency": "RUB"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {"@type": "Service", "name": "Откачка септика 7–10 м³"},
+            "price": "2400",
+            "priceCurrency": "RUB"
+          }
+        ]
+      }
+    }
+    </script>
 
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
@@ -124,82 +191,36 @@ st.markdown(
         border-color: #e85d04;
         box-shadow: 0 12px 28px rgba(232, 93, 4, 0.15);
     }
-    .price-title {
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: #333;
-    }
-    .price-value {
-        font-size: 2.15rem;
-        font-weight: 800;
-        color: #e85d04;
-        margin: 10px 0;
-        letter-spacing: -0.03em;
-    }
-    .price-details {
-        font-size: 1rem;
-        color: #555;
-        line-height: 1.55;
-        margin-bottom: 16px;
-    }
+    .price-title { font-size: 1.15rem; font-weight: 700; color: #333; }
+    .price-value { font-size: 2.15rem; font-weight: 800; color: #e85d04; margin: 10px 0; letter-spacing: -0.03em; }
+    .price-details { font-size: 1rem; color: #555; line-height: 1.55; margin-bottom: 16px; }
 
-    .contact-item {
-        font-size: 1.15rem;
-        margin: 8px 0;
-    }
-    .contact-item a {
-        color: #e85d04;
-        text-decoration: none;
-        font-weight: 600;
-        transition: color 0.2s ease;
-    }
-    .contact-item a:hover {
-        color: #c2410c;
-        text-decoration: underline;
-    }
+    .contact-item { font-size: 1.15rem; margin: 8px 0; }
+    .contact-item a { color: #e85d04; text-decoration: none; font-weight: 600; transition: color 0.2s ease; }
+    .contact-item a:hover { color: #c2410c; text-decoration: underline; }
 
     .section-title {
-        font-size: 1.75rem;
-        font-weight: 800;
-        color: #1a1a1a;
-        text-align: center;
-        margin: 1.6rem 0 0.35rem 0;
-        letter-spacing: -0.02em;
+        font-size: 1.75rem; font-weight: 800; color: #1a1a1a;
+        text-align: center; margin: 1.6rem 0 0.35rem 0; letter-spacing: -0.02em;
     }
-    .section-subtitle {
-        text-align: center;
-        color: #666;
-        margin-bottom: 1.1rem;
-        font-size: 1.05rem;
-    }
+    .section-subtitle { text-align: center; color: #666; margin-bottom: 1.1rem; font-size: 1.05rem; }
 
     .footer-box {
         background: linear-gradient(90deg, #e85d04 0%, #f48c06 100%);
-        color: white;
-        text-align: center;
-        padding: 32px 18px;
-        border-radius: 14px;
-        margin-top: 2rem;
-        margin-bottom: 0.4rem;
+        color: white; text-align: center; padding: 32px 18px;
+        border-radius: 14px; margin-top: 2rem; margin-bottom: 0.4rem;
     }
 
     .map-wrap {
-        border-radius: 16px;
-        overflow: hidden;
+        border-radius: 16px; overflow: hidden;
         box-shadow: 0 8px 28px rgba(0,0,0,0.1);
-        border: 2px solid #ffe0b2;
-        margin-top: 0.5rem;
+        border: 2px solid #ffe0b2; margin-top: 0.5rem;
     }
 
     .seo-block {
-        background: #fafafa;
-        border-radius: 12px;
-        padding: 20px 24px;
-        margin: 1.2rem 0;
-        border: 1px solid #eee;
-        font-size: 1.02rem;
-        color: #333;
-        line-height: 1.65;
+        background: #fafafa; border-radius: 12px; padding: 20px 24px;
+        margin: 1.2rem 0; border: 1px solid #eee;
+        font-size: 1.02rem; color: #333; line-height: 1.65;
     }
     </style>
     """,
@@ -275,7 +296,7 @@ with col2:
     )
     st.markdown('</div>', unsafe_allow_html=True)
 
-# ===== SEO-текст (видим поисковикам) =====
+# ===== SEO-текст =====
 st.markdown(
     """
     <div class="seo-block anim-fade-up">
@@ -288,7 +309,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ===== ПОЧЕМУ МЫ — АККОРДЕОН =====
+# ===== ПОЧЕМУ МЫ =====
 st.markdown('<div class="section-title anim-fade-up">Почему выбирают нашу откачку септиков в Абакане</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-subtitle">Факты о компании — опыт, цены и качество вывоза ЖБО</div>', unsafe_allow_html=True)
 
@@ -327,63 +348,23 @@ accordion_html = f"""
 <style>
   .acc-wrap {{ font-family: 'Outfit', sans-serif; max-width: 100%; padding-bottom: 16px; }}
   .acc-item {{
-    background: #fff8f0;
-    border-left: 5px solid #e85d04;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: box-shadow 0.25s ease, transform 0.2s ease;
-    overflow: hidden;
+    background: #fff8f0; border-left: 5px solid #e85d04; border-radius: 12px;
+    margin-bottom: 10px; cursor: pointer; transition: box-shadow 0.25s ease; overflow: hidden;
   }}
   .acc-item:hover {{ box-shadow: 0 6px 18px rgba(232, 93, 4, 0.12); }}
   .acc-item.open {{ box-shadow: 0 6px 20px rgba(232, 93, 4, 0.15); }}
-  .acc-header {{
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 16px 18px;
-  }}
-  .acc-num {{
-    font-size: 1.45rem;
-    font-weight: 800;
-    color: #e85d04;
-    min-width: 28px;
-    letter-spacing: -0.02em;
-  }}
-  .acc-title {{
-    font-size: 1.05rem;
-    color: #222;
-    font-weight: 600;
-    flex: 1;
-    line-height: 1.35;
-  }}
-  .acc-arrow {{
-    font-size: 1.4rem;
-    color: #e85d04;
-    font-weight: 700;
-    transition: transform 0.3s ease;
-    transform: rotate(90deg);
-  }}
+  .acc-header {{ display: flex; align-items: center; gap: 14px; padding: 16px 18px; }}
+  .acc-num {{ font-size: 1.45rem; font-weight: 800; color: #e85d04; min-width: 28px; }}
+  .acc-title {{ font-size: 1.05rem; color: #222; font-weight: 600; flex: 1; line-height: 1.35; }}
+  .acc-arrow {{ font-size: 1.4rem; color: #e85d04; font-weight: 700; transition: transform 0.3s ease; transform: rotate(90deg); }}
   .acc-item.open .acc-arrow {{ transform: rotate(-90deg); }}
   .acc-body {{
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease, padding 0.3s ease;
-    padding: 0 18px 0 60px;
-    font-size: 1rem;
-    color: #444;
-    line-height: 1.55;
+    max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s ease;
+    padding: 0 18px 0 60px; font-size: 1rem; color: #444; line-height: 1.55;
   }}
-  .acc-item.open .acc-body {{
-    max-height: 220px;
-    padding: 0 18px 16px 60px;
-  }}
+  .acc-item.open .acc-body {{ max-height: 220px; padding: 0 18px 16px 60px; }}
 </style>
-
-<div class="acc-wrap">
-  {accordion_items}
-</div>
-
+<div class="acc-wrap">{accordion_items}</div>
 <script>
 function toggleAcc(el) {{
   const wasOpen = el.classList.contains('open');
@@ -392,7 +373,6 @@ function toggleAcc(el) {{
 }}
 </script>
 """
-
 components.html(accordion_html, height=720)
 
 # ===== ТАРИФЫ =====
@@ -400,23 +380,10 @@ st.markdown('<div class="section-title anim-fade-up">Цены на откачк�
 st.markdown('<div class="section-subtitle">Стоимость зависит от объёма, удалённости и сложности. Вывоз ЖБО — от 1 400 ₽</div>', unsafe_allow_html=True)
 
 tariffs = [
-    {
-        "title": "Тариф №1",
-        "price": "1 400 ₽",
-        "details": "Объём: до 4 м³<br>Минимальное время: 1 час<br>Длина шланга: 10 м<br>Аренда с оператором"
-    },
-    {
-        "title": "Тариф №2",
-        "price": "1 700 ₽",
-        "details": "Объём: до 6 м³<br>Минимальное время: 1 час<br>Длина шланга: 10 м<br>Аренда с оператором"
-    },
-    {
-        "title": "Тариф №3",
-        "price": "2 400 ₽",
-        "details": "Объём: от 7 до 10 м³<br>Минимальное время: 1 час<br>Длина шланга: 10 м<br>Аренда с оператором"
-    },
+    {"title": "Тариф №1", "price": "1 400 ₽", "details": "Объём: до 4 м³<br>Минимальное время: 1 час<br>Длина шланга: 10 м<br>Аренда с оператором"},
+    {"title": "Тариф №2", "price": "1 700 ₽", "details": "Объём: до 6 м³<br>Минимальное время: 1 час<br>Длина шланга: 10 м<br>Аренда с оператором"},
+    {"title": "Тариф №3", "price": "2 400 ₽", "details": "Объём: от 7 до 10 м³<br>Минимальное время: 1 час<br>Длина шланга: 10 м<br>Аренда с оператором"},
 ]
-
 cols = st.columns(3)
 for i, t in enumerate(tariffs):
     with cols[i]:
@@ -426,15 +393,13 @@ for i, t in enumerate(tariffs):
                 <div class="price-title">{t['title']}</div>
                 <div class="price-value">{t['price']}</div>
                 <div class="price-details">{t['details']}</div>
-                <a href="https://t.me/otkachkaabk_bot" target="_blank" class="btn-orange" style="width:90%; text-align:center;">
-                    Оставить заявку
-                </a>
+                <a href="https://t.me/otkachkaabk_bot" target="_blank" class="btn-orange" style="width:90%; text-align:center;">Оставить заявку</a>
             </div>
             """,
             unsafe_allow_html=True
         )
 
-# ===== ОТЗЫВЫ — КАРУСЕЛЬ =====
+# ===== ОТЗЫВЫ =====
 st.markdown('<div class="section-title anim-fade-up">Отзывы об откачке септиков в Абакане</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-subtitle">Клиенты о вывозе ЖБО и работе ассенизаторов</div>', unsafe_allow_html=True)
 
@@ -451,106 +416,49 @@ carousel_html = f"""
 <div style="font-family: 'Outfit', sans-serif; max-width: 100%; margin: 0 auto; padding-bottom: 12px;">
   <div id="carousel" style="position: relative; overflow: hidden; border-radius: 16px;">
     <div id="track" style="display: flex; transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);">
-      {''.join([
-        f'''
-        <div class="slide" style="min-width: 100%; box-sizing: border-box; padding: 8px 4px;">
-          <div style="background: #fafafa; border: 1px solid #eee; border-radius: 16px; padding: 28px 32px; 
-                      text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.06); min-height: 150px;
-                      display: flex; flex-direction: column; justify-content: center;">
-            <div style="font-weight: 700; color: #e85d04; font-size: 1.2rem; margin-bottom: 12px;">{name}</div>
-            <div style="font-size: 1.08rem; color: #444; font-style: italic; line-height: 1.55;">«{text}»</div>
-          </div>
-        </div>
-        ''' for name, text in reviews
-      ])}
+      {''.join([f'''<div style="min-width:100%;box-sizing:border-box;padding:8px 4px;"><div style="background:#fafafa;border:1px solid #eee;border-radius:16px;padding:28px 32px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.06);min-height:150px;display:flex;flex-direction:column;justify-content:center;"><div style="font-weight:700;color:#e85d04;font-size:1.2rem;margin-bottom:12px;">{n}</div><div style="font-size:1.08rem;color:#444;font-style:italic;line-height:1.55;">«{t}»</div></div></div>''' for n,t in reviews])}
     </div>
   </div>
-
-  <div style="display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 20px; padding-bottom: 8px;">
-    <button onclick="prev()" style="
-      width: 44px; height: 44px; border-radius: 50%; border: 2px solid #e85d04; background: white;
-      color: #e85d04; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s; font-weight: 700; flex-shrink: 0;
-    " onmouseover="this.style.background='#e85d04'; this.style.color='white'"
-       onmouseout="this.style.background='white'; this.style.color='#e85d04'">‹</button>
-
-    <div id="dots" style="display: flex; gap: 8px; align-items: center;"></div>
-
-    <button onclick="next()" style="
-      width: 44px; height: 44px; border-radius: 50%; border: 2px solid #e85d04; background: white;
-      color: #e85d04; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s; font-weight: 700; flex-shrink: 0;
-    " onmouseover="this.style.background='#e85d04'; this.style.color='white'"
-       onmouseout="this.style.background='white'; this.style.color='#e85d04'">›</button>
+  <div style="display:flex;justify-content:center;align-items:center;gap:16px;margin-top:20px;padding-bottom:8px;">
+    <button onclick="prev()" style="width:44px;height:44px;border-radius:50%;border:2px solid #e85d04;background:white;color:#e85d04;font-size:1.3rem;cursor:pointer;font-weight:700;">‹</button>
+    <div id="dots" style="display:flex;gap:8px;align-items:center;"></div>
+    <button onclick="next()" style="width:44px;height:44px;border-radius:50%;border:2px solid #e85d04;background:white;color:#e85d04;font-size:1.3rem;cursor:pointer;font-weight:700;">›</button>
   </div>
 </div>
-
 <script>
-  const total = {len(reviews)};
-  let idx = 0;
-  const track = document.getElementById('track');
-  const dotsEl = document.getElementById('dots');
-
-  function renderDots() {{
-    dotsEl.innerHTML = '';
-    for (let i = 0; i < total; i++) {{
-      const d = document.createElement('div');
-      d.style.cssText = `width:10px;height:10px;border-radius:50%;cursor:pointer;transition:all 0.25s;
-        background:${{i === idx ? '#e85d04' : '#ddd'}}; transform:${{i === idx ? 'scale(1.25)' : 'scale(1)'}}`;
-      d.onclick = () => {{ idx = i; update(); }};
-      dotsEl.appendChild(d);
-    }}
-  }}
-
-  function update() {{
-    track.style.transform = `translateX(-${{idx * 100}}%)`;
-    renderDots();
-  }}
-
-  function next() {{ idx = (idx + 1) % total; update(); }}
-  function prev() {{ idx = (idx - 1 + total) % total; update(); }}
-
-  setInterval(next, 4500);
-  update();
+  const total={len(reviews)}; let idx=0;
+  const track=document.getElementById('track'), dotsEl=document.getElementById('dots');
+  function renderDots(){{dotsEl.innerHTML='';for(let i=0;i<total;i++){{const d=document.createElement('div');d.style.cssText=`width:10px;height:10px;border-radius:50%;cursor:pointer;background:${{i===idx?'#e85d04':'#ddd'}};transform:${{i===idx?'scale(1.25)':'scale(1)'}}`;d.onclick=()=>{{idx=i;update();}};dotsEl.appendChild(d);}}}}
+  function update(){{track.style.transform=`translateX(-${{idx*100}}%)`;renderDots();}}
+  function next(){{idx=(idx+1)%total;update();}} function prev(){{idx=(idx-1+total)%total;update();}}
+  setInterval(next,4500); update();
 </script>
 """
-
 components.html(carousel_html, height=320)
 
 # ===== КАРТА =====
 st.markdown('<div class="section-title anim-fade-up">Откачка септика на карте Абакана</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-subtitle">Выезжаем по Абакану, Хакасии и югу Красноярского края</div>', unsafe_allow_html=True)
-
 st.markdown('<div class="map-wrap anim-fade-up">', unsafe_allow_html=True)
 components.html(
-    """
-    <iframe 
-        src="https://yandex.ru/map-widget/v1/?um=constructor%3A0403aa07c737a80100a91144e0d12fe4712afbaf35a17839453cf0d5f6120f32&source=constructor" 
-        width="100%" 
-        height="420" 
-        frameborder="0" 
-        allowfullscreen="true"
-        style="display:block; border:0;">
-    </iframe>
-    """,
+    '<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A0403aa07c737a80100a91144e0d12fe4712afbaf35a17839453cf0d5f6120f32&source=constructor" width="100%" height="420" frameborder="0" allowfullscreen="true" style="display:block;border:0;"></iframe>',
     height=430,
 )
 st.markdown('</div>', unsafe_allow_html=True)
 
-# ===== FAQ для SEO =====
+# ===== FAQ =====
 st.markdown('<div class="section-title anim-fade-up">Частые вопросы об откачке септика в Абакане</div>', unsafe_allow_html=True)
-
 st.markdown(
     """
     <div class="seo-block anim-fade-up">
         <p><strong>Сколько стоит откачка септика в Абакане?</strong><br>
-        От 1 400 ₽ за объём до 4 м³. Тариф до 6 м³ — 1 700 ₽, от 7 до 10 м³ — 2 400 ₽. Точная цена зависит от удалённости и сложности.</p>
+        От 1 400 ₽ за объём до 4 м³. До 6 м³ — 1 700 ₽, от 7 до 10 м³ — 2 400 ₽. Цена зависит от удалённости и сложности.</p>
         <p><strong>Как быстро приедет ассенизатор?</strong><br>
-        Обычно в день обращения. Звоните: +7 (3902) 212-010 или оставьте заявку в Telegram.</p>
-        <p><strong>Работаете ли вы за пределами Абакана?</strong><br>
+        Обычно в день обращения. Телефон: +7 (3902) 212-010 или заявка в Telegram.</p>
+        <p><strong>Работаете за пределами Абакана?</strong><br>
         Да. Откачка септиков и вывоз ЖБО — по Республике Хакасия и югу Красноярского края.</p>
         <p><strong>Что входит в услугу?</strong><br>
-        Откачка септика / выгребной ямы / колодца, вывоз ЖБО, работа оператора. Шланг 10 м, техника до 10 м³.</p>
+        Откачка септика, выгребной ямы или колодца, вывоз ЖБО, работа оператора. Шланг 10 м, техника до 10 м³.</p>
     </div>
     """,
     unsafe_allow_html=True
@@ -561,7 +469,6 @@ st.markdown('<div class="section-title anim-fade-up">Заказать откач
 st.markdown('<div class="section-subtitle">Телефоны и заявка — ответим быстро</div>', unsafe_allow_html=True)
 
 col1, col2 = st.columns(2, gap="medium")
-
 with col1:
     st.markdown("#### 📞 Телефоны")
     st.markdown(
@@ -573,23 +480,17 @@ with col1:
         """,
         unsafe_allow_html=True
     )
-
     st.markdown("#### ✉️ Электронная почта")
-    st.markdown(
-        '<div class="contact-item">📧 <a href="mailto:septikabakan@mail.ru">septikabakan@mail.ru</a></div>',
-        unsafe_allow_html=True
-    )
+    st.markdown('<div class="contact-item">📧 <a href="mailto:septikabakan@mail.ru">septikabakan@mail.ru</a></div>', unsafe_allow_html=True)
 
 with col2:
     st.markdown("#### 🏢 Реквизиты")
     st.markdown(
         """
-        <p style="margin:0 0 6px 0; font-size:1.1rem;"><strong>ИП Качур Максим Васильевич</strong></p>
-        <p style="margin:0 0 14px 0; font-size:1.05rem;">ИНН <a href="https://www.rusprofile.ru/ip/317190100007117?print=pdf" target="_blank" style="color:#e85d04; font-weight:600;">190116760265</a></p>
-        <p style="margin:0 0 14px 0; font-size:1rem; color:#555;">Абакан, Республика Хакасия — откачка септиков и вывоз ЖБО</p>
-        <a href="https://t.me/otkachkaabk_bot" target="_blank" class="btn-yellow">
-            💬 Оставить заявку в Telegram
-        </a>
+        <p style="margin:0 0 6px 0;font-size:1.1rem;"><strong>ИП Качур Максим Васильевич</strong></p>
+        <p style="margin:0 0 14px 0;font-size:1.05rem;">ИНН <a href="https://www.rusprofile.ru/ip/317190100007117?print=pdf" target="_blank" style="color:#e85d04;font-weight:600;">190116760265</a></p>
+        <p style="margin:0 0 14px 0;font-size:1rem;color:#555;">Абакан, Республика Хакасия — откачка септиков и вывоз ЖБО</p>
+        <a href="https://t.me/otkachkaabk_bot" target="_blank" class="btn-yellow">💬 Оставить заявку в Telegram</a>
         """,
         unsafe_allow_html=True
     )
@@ -598,14 +499,12 @@ with col2:
 st.markdown(
     """
     <div class="footer-box anim-fade-in">
-        <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 5px; letter-spacing: -0.01em;">
+        <div style="font-size:1.3rem;font-weight:700;margin-bottom:5px;">
             <span class="truck-drive">🚛</span> ИП Качур М. В.
         </div>
-        <div style="opacity: 0.92; margin-bottom: 10px; font-size: 1.05rem;">Откачка септика в Абакане · Вывоз ЖБО · Хакасия</div>
-        <div style="font-size: 1rem; opacity: 0.9;">
-            +7 (3902) 212-010 &nbsp;|&nbsp; septikabakan@mail.ru
-        </div>
-        <div style="margin-top: 16px; font-size: 0.85rem; opacity: 0.75;">
+        <div style="opacity:0.92;margin-bottom:10px;font-size:1.05rem;">Откачка септика в Абакане · Вывоз ЖБО · Хакасия</div>
+        <div style="font-size:1rem;opacity:0.9;">+7 (3902) 212-010 &nbsp;|&nbsp; septikabakan@mail.ru</div>
+        <div style="margin-top:16px;font-size:0.85rem;opacity:0.75;">
             © 2026 ИП Качур М. В. — Откачка септиков в Абакане. Все права защищены.
         </div>
     </div>
