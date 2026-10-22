@@ -1,6 +1,5 @@
 import streamlit as st
 import streamlit.components.v1 as components
-from urllib.parse import quote
 
 st.set_page_config(
     page_title="Откачка септика Абакан — вывоз ЖБО от 1400 ₽ | ИП Качур М.В.",
@@ -101,13 +100,6 @@ st.markdown(
     }
     .map-wrap { border-radius: 16px; overflow: hidden; box-shadow: 0 8px 28px rgba(0,0,0,0.1); border: 2px solid #ffe0b2; margin-top: 0.5rem; }
     .seo-block { background: #fafafa; border-radius: 12px; padding: 18px 20px; margin: 1rem 0; border: 1px solid #eee; font-size: 1.02rem; color: #333; line-height: 1.65; }
-    .calc-box {
-        background: linear-gradient(135deg, #fff8f0 0%, #fff 100%);
-        border: 2px solid #ffe0b2; border-radius: 16px; padding: 22px 20px; margin: 0.5rem 0 1rem 0;
-    }
-    .calc-result {
-        font-size: 1.8rem; font-weight: 800; color: #e85d04; text-align: center; margin: 12px 0 8px 0;
-    }
     @media (max-width: 640px) {
         .section-title { font-size: 1.35rem; }
         .block-container { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
@@ -188,41 +180,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ===== КАЛЬКУЛЯТОР =====
-st.markdown('<div class="section-title anim-fade-up">Калькулятор стоимости откачки</div>', unsafe_allow_html=True)
-st.markdown('<div class="section-subtitle">Выберите объём и зону — узнайте ориентировочную цену</div>', unsafe_allow_html=True)
-
-st.markdown('<div class="calc-box anim-fade-up">', unsafe_allow_html=True)
-c1, c2 = st.columns(2)
-with c1:
-    volume = st.selectbox(
-        "Объём откачки",
-        ["До 4 м³", "До 6 м³", "От 7 до 10 м³"],
-        index=0
-    )
-with c2:
-    zone = st.selectbox(
-        "Зона выезда",
-        ["Абакан (в черте города)", "Хакасия / пригород", "Юг Красноярского края"],
-        index=0
-    )
-
-base = {"До 4 м³": 1400, "До 6 м³": 1700, "От 7 до 10 м³": 2400}[volume]
-extra = {"Абакан (в черте города)": 0, "Хакасия / пригород": 300, "Юг Красноярского края": 600}[zone]
-total = base + extra
-
-st.markdown(f'<div class="calc-result">от {total:,} ₽</div>'.replace(",", " "), unsafe_allow_html=True)
-st.caption("Ориентировочная цена. Точная стоимость уточняется при заявке (сложность, шланг, время).")
-
-msg = f"Здравствуйте! Нужна откачка септика: {volume}, зона: {zone}. Ориентир по калькулятору: от {total} ₽."
-tg_link = f"https://t.me/otkachkaabk_bot?text={quote(msg)}"
-st.markdown(
-    f'<div style="text-align:center;margin-top:8px;"><a href="{tg_link}" target="_blank" class="btn-yellow">💬 Заказать за {total} ₽ в Telegram</a></div>',
-    unsafe_allow_html=True
-)
-st.markdown('</div>', unsafe_allow_html=True)
-
-# ===== ПОЧЕМУ МЫ (компактнее + больше высота iframe) =====
+# ===== ПОЧЕМУ МЫ =====
 st.markdown('<div class="section-title anim-fade-up">Почему выбирают нашу откачку септиков в Абакане</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-subtitle">Нажмите на пункт, чтобы открыть подробности</div>', unsafe_allow_html=True)
 
@@ -287,7 +245,6 @@ function toggleAcc(el) {{
 }}
 </script>
 """
-# Высота с запасом под раскрытие 7-го пункта на телефоне
 components.html(accordion_html, height=980)
 
 # ===== ТАРИФЫ =====
