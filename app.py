@@ -100,6 +100,17 @@ st.markdown(
     }
     .map-wrap { border-radius: 16px; overflow: hidden; box-shadow: 0 8px 28px rgba(0,0,0,0.1); border: 2px solid #ffe0b2; margin-top: 0.5rem; }
     .seo-block { background: #fafafa; border-radius: 12px; padding: 18px 20px; margin: 1rem 0; border: 1px solid #eee; font-size: 1.02rem; color: #333; line-height: 1.65; }
+    div[data-testid="stExpander"] {
+        background: #fff8f0;
+        border: 1px solid #ffe0b2 !important;
+        border-radius: 12px !important;
+        margin-bottom: 8px;
+    }
+    div[data-testid="stExpander"] details summary p {
+        font-weight: 600 !important;
+        color: #222 !important;
+        font-size: 1.02rem !important;
+    }
     @media (max-width: 640px) {
         .section-title { font-size: 1.35rem; }
         .block-container { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
@@ -331,32 +342,32 @@ components.html(
 )
 st.markdown('</div>', unsafe_allow_html=True)
 
-# ===== FAQ (с уточнённой частотой откачки) =====
+# ===== FAQ — через expander (корректное отображение) =====
 st.markdown('<div class="section-title anim-fade-up">Частые вопросы об откачке септика в Абакане</div>', unsafe_allow_html=True)
-st.markdown(
-    """
-    <div class="seo-block anim-fade-up">
-        <p><strong>Сколько стоит откачка септика в Абакане?</strong><br>
-        От 1 400 ₽ (до 4 м³). До 6 м³ — 1 700 ₽, 7–10 м³ — 2 400 ₽.</p>
+st.markdown('<div class="section-subtitle">Нажмите на вопрос, чтобы увидеть ответ</div>', unsafe_allow_html=True)
 
-        <p><strong>Как часто нужно откачивать септик?</strong><br>
-        Всё зависит от <strong>объёма септика</strong> и расхода воды. Маленькие ёмкости наполняются быстрее, большие — реже.<br>
-        • <strong>1–2 раза в месяц</strong> — для многих частных домов это нормально, особенно при небольшом септике или большой семье.<br>
-        • <strong>Раз в 1–3 месяца</strong> — тоже обычная практика, смотрите по уровню заполнения.<br>
-        • <strong>1–2 раза в неделю и чаще</strong> — уже довольно часто: стоит проверить, не попадает ли в ёмкость грунтовая или талая вода, нет ли протечек, достаточен ли объём септика.</p>
+with st.expander("Сколько стоит откачка септика в Абакане?"):
+    st.write("От **1 400 ₽** (до 4 м³). До 6 м³ — **1 700 ₽**, от 7 до 10 м³ — **2 400 ₽**.")
 
-        <p><strong>Как быстро приедет ассенизатор?</strong><br>
-        Обычно в день обращения. +7 (3902) 212-010</p>
+with st.expander("Как часто нужно откачивать септик?"):
+    st.markdown(
+        """
+Всё зависит от **объёма септика** и расхода воды. Маленькие ёмкости наполняются быстрее, большие — реже.
 
-        <p><strong>Работаете за пределами Абакана?</strong><br>
-        Да — Хакасия и юг Красноярского края.</p>
+- **1–2 раза в месяц** — для многих частных домов это нормально, особенно при небольшом септике или большой семье.
+- **Раз в 1–3 месяца** — тоже обычная практика, ориентируйтесь по уровню заполнения.
+- **1–2 раза в неделю и чаще** — уже довольно часто: стоит проверить, не попадает ли грунтовая или талая вода, нет ли протечек, достаточен ли объём септика.
+        """
+    )
 
-        <p><strong>Что входит в услугу?</strong><br>
-        Откачка, вывоз ЖБО, оператор. Шланг 10 м, техника до 10 м³.</p>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+with st.expander("Как быстро приедет ассенизатор?"):
+    st.write("Обычно **в день обращения**. Телефон: +7 (3902) 212-010")
+
+with st.expander("Работаете за пределами Абакана?"):
+    st.write("Да — по **Республике Хакасия** и **югу Красноярского края**.")
+
+with st.expander("Что входит в услугу?"):
+    st.write("Откачка септика / выгребной ямы / колодца, вывоз ЖБО, работа оператора. Шланг 10 м, техника до 10 м³.")
 
 # ===== КОНТАКТЫ =====
 st.markdown('<div class="section-title anim-fade-up">Заказать откачку септика в Абакане</div>', unsafe_allow_html=True)
